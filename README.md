@@ -1,6 +1,6 @@
 # Fynematic
 
-Fynematic is a simple tool that automates the generation of [Material Icons v4.0.0](https://fonts.google.com/icons) for the [Fyne](https://fyne.io/) toolkit. 
+Fynematic is a simple CLI tool that automates the generation of [Material Icons v4.0.0](https://fonts.google.com/icons) for the [Fyne](https://fyne.io/) toolkit. 
 
 The generated icons are compatible with the dark and light themes.
 
