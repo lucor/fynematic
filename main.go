@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const baseURL = "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/%s/%s/materialicons%s/24px.svg"
+const baseURL = "https://raw.githubusercontent.com/google/material-design-icons/%s/src/%s/%s/materialicons%s/24px.svg"
 
 var styles = []string{
 	"outlined", "filled", "round", "sharp", "twotone",
@@ -31,15 +31,17 @@ func main() {
 	var name string
 	var pkg string
 	var dir string
+	var release string
 
 	helpStyle := fmt.Sprintf("icon style. Allowed styles: %v", styles)
 	helpCategories := fmt.Sprintf("icon category. Allowed categories: %v", categories)
 
-	flag.StringVar(&style, "style", "outlined", helpStyle)
 	flag.StringVar(&category, "category", "action", helpCategories)
+	flag.StringVar(&dir, "dir", ".", "output folder")
 	flag.StringVar(&name, "name", "info", "icon name. See https://fonts.google.com/icons for the full list")
 	flag.StringVar(&pkg, "package", "main", "package to use in header")
-	flag.StringVar(&dir, "dir", ".", "output folder")
+	flag.StringVar(&style, "style", "outlined", helpStyle)
+	flag.StringVar(&release, "release", "master", "material icon release tag on GitHub")
 	flag.Parse()
 
 	if !contains(styles, style) {
@@ -67,7 +69,7 @@ func main() {
 	if style != "filled" {
 		reqStyle = style
 	}
-	url := fmt.Sprintf(baseURL, category, name, reqStyle)
+	url := fmt.Sprintf(baseURL, release, category, name, reqStyle)
 	client := http.DefaultClient
 	client.Timeout = 10 * time.Second
 
