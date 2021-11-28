@@ -13,7 +13,7 @@ See the [example](/example) folder for an example application.
 ## Installation
 
 ```
-go install github.com/lucor/fynematics@latest
+go install github.com/lucor/fynematic@latest
 ```
 
 ## Usage
